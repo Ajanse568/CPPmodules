@@ -6,12 +6,12 @@
 /*   By: ajanse <ajanse@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/10 15:09:59 by ajanse        #+#    #+#                 */
-/*   Updated: 2022/06/10 15:11:54 by ajanse        ########   odam.nl         */
+/*   Updated: 2022/11/04 09:19:47 by ajanse        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __Fixed_H__
-#define __Fixed_H__
+#ifndef __FIXED_H__
+#define __FIXED_H__
 
 #include <iostream>
 
