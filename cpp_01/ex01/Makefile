@@ -3,7 +3,7 @@ SRCS =	Zombie.cpp\
 		main.cpp
 
 CPP = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 COMPILE = $(CPP) $(CFLAGS)
 RM = rm -f
 
@@ -11,7 +11,7 @@ NAME = zombie
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRCS)
 	$(COMPILE) $(SRCS) -o $(NAME)
 
 clean:

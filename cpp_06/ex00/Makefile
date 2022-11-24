@@ -1,11 +1,12 @@
-SRCS =	main.cpp
+SRCS =	ClapTrap.cpp\
+		main.cpp
 
 CPP = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 COMPILE = $(CPP) $(CFLAGS)
 RM = rm -f
 
-NAME = brain
+NAME = ClapTrap
 
 all: $(NAME)
 

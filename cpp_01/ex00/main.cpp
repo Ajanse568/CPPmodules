@@ -1,5 +1,4 @@
 #include "Zombie.hpp"
- #include <cstdlib>
 
 int		main(void)
 {
@@ -11,7 +10,6 @@ int		main(void)
 	zombie->announce();
 	zombie->announce();
 
-	delete zombie;
 	randomChump("Bob");
 	delete zombie;
 }

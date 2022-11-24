@@ -12,7 +12,7 @@ NAME = zombie
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRCS)
 	$(COMPILE) $(SRCS) -o $(NAME)
 
 clean:
