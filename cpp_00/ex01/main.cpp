@@ -1,8 +1,20 @@
-#include "Phonebook.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.cpp                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ajanse <ajanse@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/23 15:15:26 by ajanse        #+#    #+#                 */
+/*   Updated: 2022/11/23 15:23:16 by ajanse        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "PhoneBook.hpp"
 
 int main(void) {
 
-	Phonebook gouden_gids;
+	PhoneBook gouden_gids;
 
 	while(1)
 	{
@@ -13,7 +25,7 @@ int main(void) {
 			gouden_gids.addContact();
 		if (cmd == "SEARCH")
 			gouden_gids.searchContact();
-		if (cmd == "EXIT")
+		if (cmd == "EXIT" || std::cin.eof())
 			break;
 	}
 	return (0);

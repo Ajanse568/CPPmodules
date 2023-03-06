@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Contact.cpp                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ajanse <ajanse@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/23 15:15:18 by ajanse        #+#    #+#                 */
+/*   Updated: 2022/11/23 15:15:20 by ajanse        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 
 std::string	Contact::field_names[5] = {
@@ -25,6 +37,8 @@ void	Contact::setInfo(void) {
 			std::cout << "No empty fields allowed!\n";
 			i--;
 		}
+		if (std::cin.eof())
+			break ;
 	}
 
 }

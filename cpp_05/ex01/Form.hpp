@@ -4,10 +4,14 @@
 #include <ostream>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+class CustomException;
+
 class Form
 {
 public:
 
+	Form( void );
 	Form( const std::string name, const int signgrade, const int excgrade );
 	Form( const Form &obj );
 	~Form();
@@ -27,7 +31,7 @@ private:
 
 	CustomException		GradeTooHighException;
 	CustomException		GradeTooLowException;
-	void				checkGrade( void );
+	void				checkGrades( void );
 
 };
 

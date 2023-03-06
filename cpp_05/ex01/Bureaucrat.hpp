@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+class Form;
+
 class CustomException : public std::exception
 {
 
@@ -29,6 +31,7 @@ public:
 	int					getGrade( void ) const;
 	void				incrementGrade( void );
 	void				decrementGrade( void );
+	void				signForm(const Form &Form);
 
 private:
 
@@ -38,7 +41,6 @@ private:
 	CustomException		GradeTooHighException;
 	CustomException		GradeTooLowException;
 	void				checkGrade( void );
-
 
 };
 

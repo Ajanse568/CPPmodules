@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Phonebook.hpp                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ajanse <ajanse@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/23 15:15:39 by ajanse        #+#    #+#                 */
+/*   Updated: 2022/11/23 15:24:08 by ajanse        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef __PHONEBOOK_H__
 #define __PHONEBOOK_H__
 
 #include "Contact.hpp"
 
-class Phonebook {
+class PhoneBook {
 
 
 private:
@@ -17,8 +29,8 @@ private:
 
 public:
 
-	Phonebook();
-	~Phonebook();
+	PhoneBook();
+	~PhoneBook();
 
 	void	addContact(void);
 	void	searchContact(void);

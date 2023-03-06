@@ -1,14 +1,26 @@
-#include "Phonebook.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Phonebook.cpp                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ajanse <ajanse@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/23 15:15:34 by ajanse        #+#    #+#                 */
+/*   Updated: 2022/11/23 15:24:02 by ajanse        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
-Phonebook::Phonebook() {
+#include "PhoneBook.hpp"
+
+PhoneBook::PhoneBook() {
 	next_c = 0;
 	amount = 0;
 }
 
-Phonebook::~Phonebook() {
+PhoneBook::~PhoneBook() {
 }
 
-void	Phonebook::addContact(void) {
+void	PhoneBook::addContact(void) {
 
 	contacts[next_c].setInfo();
 	if (amount != 8)
@@ -19,7 +31,7 @@ void	Phonebook::addContact(void) {
 
 }
 
-void	Phonebook::searchHeader(void) {
+void	PhoneBook::searchHeader(void) {
 
 	std::cout << '\n' << "    Index |First Name| Last Name| Nickname " << "\n\n";
 	for (int i = 0; i < amount; i++)
@@ -29,7 +41,7 @@ void	Phonebook::searchHeader(void) {
 	}
 }
 
-int	Phonebook::askIndex(void) {
+int	PhoneBook::askIndex(void) {
 
 	int	index = -1;
 
@@ -37,6 +49,8 @@ int	Phonebook::askIndex(void) {
 	{
 		std::cout << '\n' << "Give the index of the contact you want to see: ";
 		std::cin >> index;
+		if (std::cin.eof())
+			exit(1) ;
 		if (std::cin.fail())
 		{
 			std::cin.clear();
@@ -50,7 +64,7 @@ int	Phonebook::askIndex(void) {
 	return (index);
 }
 
-void	Phonebook::searchContact(void) {
+void	PhoneBook::searchContact(void) {
 
 	int	index;
 
