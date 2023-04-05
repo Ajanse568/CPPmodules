@@ -14,9 +14,6 @@
 #define __CONTACT_H__
 
 #include <iostream>
-#include <iomanip>
-#include <stdexcept>
-#include <limits>
 
 class Contact {
 
@@ -27,12 +24,12 @@ private:
 
 public:
 
-	Contact();
-	~Contact();
+	Contact() { };
+	~Contact() { };
 
 	void	setInfo(void);
 	void	preview(void);
-	void	fullview(void);
+	void	fullView(void);
 
 };
 

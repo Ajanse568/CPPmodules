@@ -11,20 +11,15 @@
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+#include <iostream>
+#include <iomanip>
 
 std::string	Contact::field_names[5] = {
-	"first_name", 
-	"last_name", 
-	"nickname", 
-	"phone_number", 
+	"first_name",
+	"last_name",
+	"nickname",
+	"phone_number",
 	"darkest_secret"};
-
-Contact::Contact() {
-
-}
-
-Contact::~Contact() {
-}
 
 void	Contact::setInfo(void) {
 
@@ -63,7 +58,7 @@ void	Contact::preview(void) {
 	}
 }
 
-void	Contact::fullview(void) {
+void	Contact::fullView(void) {
 
 	for (int i = 0; i < 5; i++)
 		std::cout << field_names[i] << ": " << field_values[i] << '\n';

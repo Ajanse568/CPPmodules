@@ -12,6 +12,11 @@
 
 #include <iostream>
 
+char my_toupper(char ch)
+{
+    return static_cast<char>(std::toupper(static_cast<unsigned char>(ch)));
+}
+
 int	main(int argc, char const **argv)
 {
 	if (argc == 1)
@@ -20,9 +25,8 @@ int	main(int argc, char const **argv)
 	{
 		for (int i = 1; argv[i]; i++)
 		{
-			std::string str(argv[i]);
-			for (int j = 0; str[j]; j++)
-				std::cout << (char)std::toupper(str[j]);
+			for (int j = 0; argv[i][j]; j++)
+				std::cout << my_toupper(argv[i][j]);
 		}
 		std::cout << std::endl;
 	}

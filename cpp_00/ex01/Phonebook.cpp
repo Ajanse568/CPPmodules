@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <iostream>
+#include <iomanip>
 
 PhoneBook::PhoneBook() {
 	next_c = 0;
@@ -54,7 +56,7 @@ int	PhoneBook::askIndex(void) {
 		if (std::cin.fail())
 		{
 			std::cin.clear();
-			std::cout << '\n' << "Please type a number!" << '\n';
+			std::cout << '\n' << "Please type a number below 9!" << '\n';
 			index = -1;
 		}
 		else if ((index < 0 || index > this->amount - 1))
@@ -74,6 +76,6 @@ void	PhoneBook::searchContact(void) {
 	{
 		this->searchHeader();
 		index = this->askIndex();
-		this->contacts[index].fullview();
+		this->contacts[index].fullView();
 	}
 }
