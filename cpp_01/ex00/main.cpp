@@ -2,9 +2,9 @@
 
 int		main(void)
 {
-	Zombie	*zombie;
+    Zombie	*zombie;
 
-	zombie = newZombie("Bert");
+    zombie = newZombie("Bert");
 	zombie->announce();
 	zombie->announce();
 	zombie->announce();

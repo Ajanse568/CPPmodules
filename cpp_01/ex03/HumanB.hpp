@@ -1,4 +1,4 @@
-F#ifndef __HUMANB_H__
+#ifndef __HUMANB_H__
 #define __HUMANB_H__
 
 #include "iostream"

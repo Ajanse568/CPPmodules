@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 	std::ifstream	read_file(filename.c_str());
 	std::ofstream	write_file((filename + ".replace").c_str());
 
-	if (argc > 4)
+	if (argc != 4)
 		return (1);
 
 	replace_write(read_file, write_file, argv);

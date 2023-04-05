@@ -1,4 +1,5 @@
 #include "Zombie.hpp"
+#include <iostream>
 
 Zombie::Zombie ( std::string given_name ) 
 {
@@ -8,6 +9,7 @@ Zombie::Zombie ( std::string given_name )
 Zombie::Zombie ( void )
 {
 	this->name = "Nameless Zombie";
+    std::cout << this->name << "\n";
 }
 
 Zombie::~Zombie ( void )
