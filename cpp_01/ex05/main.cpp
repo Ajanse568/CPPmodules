@@ -1,8 +1,8 @@
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 int	main(void)
 {
-	Karen	monster;
+	Harl	monster;
 
 	monster.complain("ERROR");
 }

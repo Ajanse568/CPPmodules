@@ -1,4 +1,4 @@
-SRCS =	Karen.cpp\
+SRCS =	Harl.cpp\
 		main.cpp
 
 CPP = c++
@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 COMPILE = $(CPP) $(CFLAGS)
 RM = rm -f
 
-NAME = karen
+NAME = harl
 
 all: $(NAME)
 
