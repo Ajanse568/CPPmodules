@@ -1,14 +1,14 @@
-#ifndef __KAREN_H__
-#define __KAREN_H__
+#ifndef __HARL_H__
+#define __HARL_H__
 
 #include <iostream>
 
-class Karen
+class Harl
 {
 
 private:
 
-	void(Karen::*functptr[4])(void);
+	void(Harl::*functptr[4])(void);
 	std::string	levels[4]  = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	void	debug( void );
@@ -20,8 +20,8 @@ private:
 
 public:
 
-	Karen( void );
-	~Karen( void );
+	Harl( void );
+	~Harl( void );
 
 	void	complain( std::string level );
 
