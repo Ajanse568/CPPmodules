@@ -3,7 +3,7 @@ SRCS =	Zombie.cpp\
 		main.cpp
 
 CPP = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 COMPILE = $(CPP) $(CFLAGS)
 RM = rm -f
 

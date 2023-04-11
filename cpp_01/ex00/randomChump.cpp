@@ -3,5 +3,6 @@
 void	randomChump ( std::string name )
 {
 	Zombie	walker(name);
-	walker.announce();
+
+    walker.announce();
 }

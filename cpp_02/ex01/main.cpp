@@ -3,7 +3,8 @@
 
 int main( void ) {
 
-	Fixed a;
+	std::string in;
+    Fixed a;
 	Fixed const b( 10 );
 	Fixed const c( 42.42f );
 	Fixed const d( b );

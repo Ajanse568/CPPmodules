@@ -8,9 +8,6 @@ class Harl
 
 private:
 
-	void(Harl::*functptr[4])(void);
-	std::string	levels[4]  = {"DEBUG", "INFO", "WARNING", "ERROR"};
-
 	void	debug( void );
 	void	info( void );
 	void	warning( void );

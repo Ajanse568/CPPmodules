@@ -7,8 +7,6 @@ int		main(void)
     zombie = newZombie("Bert");
 	zombie->announce();
 	zombie->announce();
-	zombie->announce();
-	zombie->announce();
 
 	randomChump("Bob");
 	delete zombie;

@@ -14,13 +14,12 @@
 #define __Fixed_H__
 
 #include <iostream>
-#include <cmath>
 
 class Fixed
 {
 private:
-	int					val;
-	static const int	fract = 8;
+	int					_val;
+	static const int	_fract = 8;
 
 public:
 	Fixed();

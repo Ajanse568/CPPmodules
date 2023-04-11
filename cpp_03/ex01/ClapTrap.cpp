@@ -5,15 +5,24 @@ ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints
 	std::cout << "ClapTrap constructed! Name: " << name << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name, unsigned int hitp, unsigned int energyp, unsigned int attackd)
-: _name(name), _hitPoints(hitp), _energyPoints(energyp), _attackDamage(attackd)
-{
-	std::cout << "ClapTrap constructed! Name: " << name << std::endl;
-}
-
 ClapTrap::~ClapTrap(void)
 {
 	std::cout << this->_name << " gets destroyed." << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& other)
+{
+    std::cout << "ClapTrap copied!" << std::endl;
+    *this = other;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other)
+{
+    this->_name = other._name;
+    this->_hitPoints = other._hitPoints;
+    this->_energyPoints = other._energyPoints;
+    this->_attackDamage = other._attackDamage;
+    return *this;
 }
 
 void	ClapTrap::attack(const std::string& target)
@@ -55,9 +64,4 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 		std::cout << this->_name << " is not able to repair:(" << std::endl;
-}
-
-std::string	ClapTrap::getName(void)
-{
-	return (this->_name);
 }

@@ -1,11 +1,7 @@
 #include "Harl.hpp"
 
-Harl::Harl(void) 
+Harl::Harl(void)
 {
-	this->functptr[0] = &Harl::debug;
-	this->functptr[1] = &Harl::info;
-    this->functptr[2] = &Harl::warning;
-    this->functptr[3] = &Harl::error;
 }
 
 Harl::~Harl(void)
@@ -34,12 +30,16 @@ void	Harl::error(void)
 
 void	Harl::complain( std::string level )
 {
-	for (int i = 0; i < 4; i++)
+	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    void (Harl::*functptr[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+
+    for (int i = 0; i < 4; i++)
 	{
-		if (level == this->levels[i])
-		{
-			std::cout << level;
-			(this->*functptr[i])();
-		}
+		if (level == levels[i]) {
+            std::cout << level << std::endl;
+            (this->*functptr[i])();
+            return;
+        }
 	}
+    std::cout << "Invalid level" << std::endl;
 }

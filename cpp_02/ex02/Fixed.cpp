@@ -11,43 +11,39 @@
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <cmath>
 
 Fixed::Fixed()
 {
-	//std::cout << "Default constructor called" << std::endl;
-	this->val = 0;
+	this->_val = 0;
 }
 
 Fixed::Fixed(Fixed const &obj)
 {
-	//std::cout << "Copy constructor called" << std::endl;
 	*this = obj;
 }
 
 Fixed::Fixed(const int val)
 {
-	//std::cout << "Copy constructor called" << std::endl;
-	this->val = val << Fixed::fract;
+    this->_val = val << Fixed::_fract;
 }
 
 Fixed::Fixed(const float val)
 {
-	//std::cout << "Copy constructor called" << std::endl;
-	this->val = roundf(val * (1 << Fixed::fract));
+	this->_val = roundf(val * (1 << Fixed::_fract));
 }
 
 Fixed::~Fixed()
 {
-	//std::cout << "Destructor called" << std::endl;
 }
 
 Fixed	&Fixed::operator=(Fixed const &obj)
 {
-	//std::cout << "Copy assignment operator called" << std::endl;
-	this->val = obj.getRawBits();
+    this->_val = obj.getRawBits();
 	return (*this);
 }
 
+//--------------------Comparison operators--------------------
 bool	Fixed::operator>( Fixed const &other) const
 {
 	return(this->getRawBits() > other.getRawBits());
@@ -78,36 +74,24 @@ bool	Fixed::operator!=( Fixed const &other) const
 	return(this->getRawBits() != other.getRawBits());
 }
 
-Fixed Fixed::operator-( const Fixed &other )
+//--------------------Arithmetic operators--------------------
+Fixed Fixed::operator-( const Fixed &other ) const
 {
 	Fixed	result;
 
-	result.val = this->getRawBits() - other.getRawBits();
+	result._val = this->getRawBits() - other.getRawBits();
 	return (result);
 }
 
-Fixed Fixed::operator+( const Fixed &other )
+Fixed Fixed::operator+( const Fixed &other ) const
 {
 	Fixed	result;
 
-	result.val = this->getRawBits() + other.getRawBits();
+	result._val = this->getRawBits() + other.getRawBits();
 	return (result);
 }
 
-Fixed Fixed::operator*( const Fixed &other )
-{
-	Fixed	result;
-	long	a;
-	long	b;
-
-	a = (long)this->getRawBits();
-	b = (long)other.getRawBits();
-
-	result.setRawBits((a * b) / (1 << Fixed::fract));
-	return (result);
-}
-
-Fixed Fixed::operator/( const Fixed &other )
+Fixed Fixed::operator*( const Fixed &other )const
 {
 	Fixed	result;
 	long	a;
@@ -116,10 +100,24 @@ Fixed Fixed::operator/( const Fixed &other )
 	a = (long)this->getRawBits();
 	b = (long)other.getRawBits();
 
-	result.setRawBits((a * (1 << Fixed::fract)) / b);
+	result.setRawBits((a * b) / (1 << Fixed::_fract));
 	return (result);
 }
 
+Fixed Fixed::operator/( const Fixed &other ) const
+{
+	Fixed	result;
+	long	a;
+	long	b;
+
+	a = (long)this->getRawBits();
+	b = (long)other.getRawBits();
+
+	result.setRawBits((a * (1 << Fixed::_fract)) / b);
+	return (result);
+}
+
+//--------------------Increment/Decrement operators--------------------
 Fixed Fixed::operator++(int)
 {
 	Fixed	result(*this);
@@ -130,7 +128,7 @@ Fixed Fixed::operator++(int)
 
 Fixed Fixed::operator++()
 {
-	this->val++;
+	this->_val++;
 	return (*this);
 }
 
@@ -144,10 +142,11 @@ Fixed Fixed::operator--(int)
 
 Fixed Fixed::operator--()
 {
-	this->val--;
+	this->_val--;
 	return (*this);
 }
 
+//--------------------Min/Max--------------------
 Fixed	const &Fixed::min(Fixed const &a, Fixed const &b)
 {
 	if (a > b)
@@ -176,28 +175,28 @@ Fixed	&Fixed::max(Fixed &a, Fixed &b)
 	return (b);
 }
 
-
+//--------------------Getters/Setters--------------------
 int	Fixed::getRawBits(void) const
 {
 	//std::cout << "getRawBits member function called" << std::endl;
-	return (this->val);
+	return (this->_val);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
 	//std::cout << "setRawBits member function called" << std::endl;
-	this->val = raw;
+	this->_val = raw;
 }
 
 float	Fixed::toFloat(void) const
 {
-	return((float)this->val / (float)(1 << Fixed::fract));
+	return((float)this->_val / (float)(1 << Fixed::_fract));
 }
 
 int	Fixed::toInt(void) const
 {
 	//std::cout << "toInt member function called" << std::endl;
-	return (this->val >> Fixed::fract);
+	return (this->_val >> Fixed::_fract);
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &obj)

@@ -11,6 +11,21 @@ ClapTrap::~ClapTrap(void)
 	std::cout << this->_name << " gets destroyed." << std::endl;
 }
 
+ClapTrap::ClapTrap(const ClapTrap& other)
+{
+    std::cout << "ClapTrap copied!" << std::endl;
+    *this = other;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other)
+{
+    this->_name = other._name;
+    this->_hitPoints = other._hitPoints;
+    this->_energyPoints = other._energyPoints;
+    this->_attackDamage = other._attackDamage;
+    return *this;
+}
+
 void	ClapTrap::attack(const std::string& target)
 {
 	if (this->_hitPoints > 0 && this->_energyPoints > 0)
@@ -21,7 +36,7 @@ void	ClapTrap::attack(const std::string& target)
 		this->_energyPoints--;
 	}
 	else
-		std::cout << this->_name << " is not able to attack:(" << std::endl;
+		std::cout << this->_name << " is not able to attack :(" << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -49,5 +64,5 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		<< " points and now has " << this->_hitPoints << " HitPoints left." << std::endl;
 	}
 	else
-		std::cout << this->_name << " is not able to repair:(" << std::endl;
+		std::cout << this->_name << " is not able to repair :(" << std::endl;
 }
