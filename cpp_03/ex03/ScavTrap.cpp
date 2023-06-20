@@ -2,9 +2,7 @@
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-    this->_hitPoints = 100;
     this->_energyPoints = 50;
-    this->_attackDamage = 20;
     std::cout << this->_name << " is now a ScavTrap" << std::endl;
 }
 
@@ -15,8 +13,8 @@ ScavTrap::~ScavTrap()
 
 ScavTrap::ScavTrap(const ScavTrap& other): ClapTrap(other)
 {
-    std::cout << "ScavTrap copied!" << std::endl;
     *this = other;
+    std::cout << "ScavTrap copied!" << std::endl;
 }
 
 void    ScavTrap::attack(const std::string& target)

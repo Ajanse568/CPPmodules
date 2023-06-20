@@ -1,4 +1,5 @@
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 void    clap_away(ClapTrap& Clap)
 {
@@ -25,7 +26,12 @@ int main(void)
     std::cout << std::endl;
     clap_away(Scavy);
     Scavy.guardGate();
-    for (int i = 0; i < 46; i++)
+    for (int i = 0; i < 50; i++)
         Scavy.guardGate();
     std::cout << std::endl;
+
+    FragTrap Fragy("Fragy");
+    std::cout << std::endl;
+    clap_away(Fragy);
+    Fragy.highFivesGuys();
 }

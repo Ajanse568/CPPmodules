@@ -27,6 +27,8 @@ public:
 	Bureaucrat( const Bureaucrat &obj );
 	~Bureaucrat();
 
+	Bureaucrat &operator=( const Bureaucrat &obj);
+
 	const std::string	getName( void ) const;
 	int					getGrade( void ) const;
 	void				incrementGrade( void );
