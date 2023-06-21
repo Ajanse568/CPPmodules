@@ -5,6 +5,12 @@ ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints
 	std::cout << "ClapTrap constructed! Name: " << name << std::endl;
 }
 
+ClapTrap::ClapTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackDamage): 
+_name(name), _hitPoints(hitPoints), _energyPoints(energyPoints), _attackDamage(attackDamage)
+{
+	std::cout << "ClapTrap constructed! Name: " << name << std::endl;
+}
+
 ClapTrap::~ClapTrap(void)
 {
 	std::cout << this->_name << " gets destroyed." << std::endl;
@@ -12,17 +18,17 @@ ClapTrap::~ClapTrap(void)
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
-    *this = other;
     std::cout << "ClapTrap copied!" << std::endl;
+    *this = other;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
+    std::cout << "ClapTrap assigned!" << std::endl;
     this->_name = other._name;
     this->_hitPoints = other._hitPoints;
     this->_energyPoints = other._energyPoints;
     this->_attackDamage = other._attackDamage;
-    std::cout << "ClapTrap assigned! " << std::endl;
     return *this;
 }
 

@@ -1,7 +1,7 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap(std::string name)
-: ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name)
+: ClapTrap(name + "_clap_name", 100, 50, 30), FragTrap(name), ScavTrap(name)
 {
     this->_name = name;
     std::cout << this->_name << " is now a DiamondTrap" << std::endl;
@@ -16,6 +16,16 @@ DiamondTrap::DiamondTrap(const DiamondTrap& other): ClapTrap(other), FragTrap(ot
 {
     *this = other;
     std::cout << "DiamondTrap copied!" << std::endl;
+}
+
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other)
+{
+    std::cout << "DiamondTrap assigned!" << std::endl;
+    this->_name = other._name;
+    this->_hitPoints = other._hitPoints;
+    this->_energyPoints = other._energyPoints;
+    this->_attackDamage = other._attackDamage;
+    return *this;
 }
 
 void    DiamondTrap::whoAmI()

@@ -17,6 +17,16 @@ ScavTrap::ScavTrap(const ScavTrap& other): ClapTrap(other)
     std::cout << "ScavTrap copied!" << std::endl;
 }
 
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+{
+    std::cout << "ScavTrap assigned!" << std::endl;
+    this->_name = other._name;
+    this->_hitPoints = other._hitPoints;
+    this->_energyPoints = other._energyPoints;
+    this->_attackDamage = other._attackDamage;
+    return *this;
+}
+
 void    ScavTrap::attack(const std::string& target)
 {
     if (this->_hitPoints > 0 && this->_energyPoints > 0)

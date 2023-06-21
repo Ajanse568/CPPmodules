@@ -14,8 +14,18 @@ FragTrap::~FragTrap()
 
 FragTrap::FragTrap(const FragTrap& other): ClapTrap(other)
 {
-    *this = other;
     std::cout << "FragTrap copied!" << std::endl;
+    *this = other;
+}
+
+FragTrap& FragTrap::operator=(const FragTrap& other)
+{
+    std::cout << "FragTrap assigned!" << std::endl;
+    this->_name = other._name;
+    this->_hitPoints = other._hitPoints;
+    this->_energyPoints = other._energyPoints;
+    this->_attackDamage = other._attackDamage;
+    return *this;
 }
 
 void    FragTrap::highFivesGuys(void)

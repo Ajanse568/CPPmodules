@@ -14,4 +14,6 @@ int main(void)
 	Clap.attack("Ernie");
 	for (int i = 0; i < 11; i++)
 		Palc.attack("Claps body");
+	Palc.takeDamage(5);
+	Palc.beRepaired(6);
 }
