@@ -6,7 +6,7 @@
 /*   By: ajanse <ajanse@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/02 15:56:44 by ajanse        #+#    #+#                 */
-/*   Updated: 2022/11/04 13:49:10 by ajanse        ########   odam.nl         */
+/*   Updated: 2023/06/21 17:54:41 by ajanse        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 Dog::Dog(void)
 {
 	std::cout << "A wild dog appears" << std::endl;
-	this->type = "Dog";
+	this->_type = "Dog";
 }
 
 Dog::Dog(const Dog &obj)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Dog copied" << std::endl;
 	*this = obj;
 }
 
@@ -31,8 +31,8 @@ Dog::~Dog(void)
 
 Dog &Dog::operator=(Dog const &obj)
 {
-	std::cout << "Assignation operator called" << std::endl;
-	this->type = obj.getType();
+	std::cout << "Dog assigned" << std::endl;
+	this->_type = obj.getType();
 	return (*this);
 }
 

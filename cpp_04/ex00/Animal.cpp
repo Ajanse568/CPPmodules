@@ -6,21 +6,20 @@
 /*   By: ajanse <ajanse@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/02 15:59:02 by ajanse        #+#    #+#                 */
-/*   Updated: 2022/11/04 13:40:33 by ajanse        ########   odam.nl         */
+/*   Updated: 2023/06/21 17:42:58 by ajanse        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal(void)
+Animal::Animal(void): _type("Animal")
 {
 	std::cout << "A wild animal appears." << std::endl;
-	this->type = "Animal";
 }
 
 Animal::Animal(const Animal &obj)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Animal copied" << std::endl;
 	*this = obj;
 }
 
@@ -31,8 +30,8 @@ Animal::~Animal(void)
 
 Animal &Animal::operator=(Animal const &obj)
 {
-	std::cout << "Assignation operator called" << std::endl;
-	this->type = obj.getType();
+	std::cout << "Animal assigned" << std::endl;
+	this->_type = obj.getType();
 	return (*this);
 }
 
@@ -43,5 +42,5 @@ void	Animal::makeSound(void) const
 
 std::string	Animal::getType(void) const
 {
-	return (this->type);
+	return (this->_type);
 }
