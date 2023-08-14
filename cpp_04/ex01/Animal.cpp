@@ -15,7 +15,7 @@
 Animal::Animal(void)
 {
 	std::cout << "A wild animal appears." << std::endl;
-	this->type = "Animal";
+	this->_type = "Animal";
 }
 
 Animal::Animal(const Animal &obj)
@@ -32,7 +32,7 @@ Animal::~Animal(void)
 Animal &Animal::operator=(Animal const &obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
-	this->type = obj.getType();
+	this->_type = obj.getType();
 	return (*this);
 }
 
@@ -43,5 +43,5 @@ void	Animal::makeSound(void) const
 
 std::string	Animal::getType(void) const
 {
-	return (this->type);
+	return (this->_type);
 }

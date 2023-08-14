@@ -14,7 +14,7 @@
 
 Cat::Cat(void)
 {
-	std::cout << "A wild cat appears" << std::endl;
+	std::cout << "It is a cat!" << std::endl;
 	this->_type = "Cat";
 }
 

@@ -2,8 +2,9 @@
 
 WrongCat::WrongCat(void)
 {
-	std::cout << "A wild cat appears" << std::endl;
-	this->type = "Cat";
+	std::cout << "It is a cat!" << std::endl;
+	this->_type = "Cat";
+    this->brain = new Brain();
 }
 
 WrongCat::WrongCat(const WrongCat &obj)
@@ -20,7 +21,7 @@ WrongCat::~WrongCat(void)
 WrongCat &WrongCat::operator=(WrongCat const &obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
-	this->type = obj.getType();
+	this->_type = obj.getType();
 	return (*this);
 }
 

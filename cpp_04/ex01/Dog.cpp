@@ -14,8 +14,8 @@
 
 Dog::Dog(void)
 {
-	std::cout << "A wild dog appears" << std::endl;
-	this->type = "Dog";
+	std::cout << "It is a dog!" << std::endl;
+	this->_type = "Dog";
 	this->brain = new Brain();
 }
 
@@ -35,7 +35,7 @@ Dog::~Dog(void)
 Dog &Dog::operator=(Dog const &obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
-	this->type = obj.getType();
+	this->_type = obj.getType();
 	this->brain = new Brain(*obj.brain);
 	return (*this);
 }

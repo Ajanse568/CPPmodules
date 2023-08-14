@@ -3,7 +3,7 @@
 WrongAnimal::WrongAnimal(void)
 {
 	std::cout << "A wild animal appears." << std::endl;
-	this->type = "Animal";
+	this->_type = "Animal";
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &obj)
@@ -21,7 +21,7 @@ WrongAnimal::~WrongAnimal(void)
 WrongAnimal &WrongAnimal::operator=(WrongAnimal const &obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
-	this->type = obj.getType();
+	this->_type = obj.getType();
 	return (*this);
 }
 
@@ -32,5 +32,5 @@ void	WrongAnimal::makeSound(void) const
 
 std::string	WrongAnimal::getType(void) const
 {
-	return (this->type);
+	return (this->_type);
 }

@@ -2,6 +2,7 @@
 #define __WRONGCAT_H__
 
 #include "WrongAnimal.hpp"
+#include "Brain.hpp"
 
 class WrongCat: public WrongAnimal
 {
@@ -14,6 +15,9 @@ public:
 	WrongCat &operator=( const WrongCat &obj );
 
 	void	makeSound( void ) const;
+
+protected:
+    Brain*	brain;
 };
 
 #endif

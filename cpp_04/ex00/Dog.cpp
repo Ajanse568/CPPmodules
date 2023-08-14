@@ -14,7 +14,7 @@
 
 Dog::Dog(void)
 {
-	std::cout << "A wild dog appears" << std::endl;
+	std::cout << "It is a dog!" << std::endl;
 	this->_type = "Dog";
 }
 

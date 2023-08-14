@@ -11,7 +11,6 @@ int	main( void )
 	const Animal* cat = new Cat();
 	std::cout << std::endl;
 
-	std::cout << std::endl;
 	std::cout << dog->getType() << std::endl;
 	std::cout << cat->getType() << std::endl;
 	std::cout << std::endl;

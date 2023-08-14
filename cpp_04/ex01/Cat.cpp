@@ -14,8 +14,8 @@
 
 Cat::Cat(void)
 {
-	std::cout << "A wild cat appears" << std::endl;
-	this->type = "Cat";
+	std::cout << "It is a cat!" << std::endl;
+	this->_type = "Cat";
 	this->brain = new Brain();
 }
 
@@ -34,7 +34,7 @@ Cat::~Cat(void)
 Cat &Cat::operator=(Cat const &obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
-	this->type = obj.getType();
+	this->_type = obj.getType();
 	this->brain = new Brain(*obj.brain);
 	return (*this);
 }
