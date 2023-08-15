@@ -1,6 +1,6 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat(void)
+WrongCat::WrongCat()
 {
 	std::cout << "It is a cat!" << std::endl;
 	this->_type = "Cat";
@@ -13,7 +13,7 @@ WrongCat::WrongCat(const WrongCat &obj)
 	*this = obj;
 }
 
-WrongCat::~WrongCat(void)
+WrongCat::~WrongCat()
 {
 	std::cout << "Cat disappeared..." << std::endl;
 }
@@ -22,10 +22,15 @@ WrongCat &WrongCat::operator=(WrongCat const &obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
 	this->_type = obj.getType();
+    this->brain = obj.brain;
 	return (*this);
 }
 
-void	WrongCat::makeSound(void) const
+void	WrongCat::makeSound() const
 {
 	std::cout << "Cat says Miauw" << std::endl;
+}
+
+void     WrongCat::getBrainAddress() const {
+    std::cout << this->brain << std::endl;
 }

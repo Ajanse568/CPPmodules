@@ -17,10 +17,8 @@ int	main( void )
 	meta->makeSound();
 	std::cout << std::endl;
 	cat->makeSound();
-	cat->Animal::makeSound();
 	std::cout << std::endl;
 	dog->makeSound();
-	dog->Animal::makeSound();
 	std::cout << std::endl;
 	delete meta;
 	std::cout << std::endl;
@@ -45,4 +43,10 @@ int	main( void )
 	delete metaWrong;
 	std::cout << std::endl;
 	delete catWrong;
+    std::cout << std::endl;
+
+    Cat cats;
+    std::cout << std::endl;
+    Cat cats2(cats);
+    std::cout << std::endl;
 }

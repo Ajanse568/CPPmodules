@@ -12,18 +12,22 @@
 
 #include "Animal.hpp"
 
-Animal::Animal(void): _type("Animal")
+Animal::Animal(): _type("Animal")
 {
 	std::cout << "A wild animal appears." << std::endl;
 }
 
-Animal::Animal(const Animal &obj)
+Animal::Animal(std::string type): _type(type)
 {
-	std::cout << "Animal copied" << std::endl;
-	*this = obj;
+    std::cout << "A wild animal appears." << std::endl;
 }
 
-Animal::~Animal(void)
+Animal::Animal(const Animal &obj): _type(obj._type)
+{
+    std::cout << "Copy constructor called" << std::endl;
+}
+
+Animal::~Animal()
 {
 	std::cout << "Animal disappeared..." << std::endl;
 }
@@ -31,16 +35,18 @@ Animal::~Animal(void)
 Animal &Animal::operator=(Animal const &obj)
 {
 	std::cout << "Animal assigned" << std::endl;
-	this->_type = obj.getType();
+    if (this != &obj){
+	    this->_type = obj.getType();
+    }
 	return (*this);
 }
 
-void	Animal::makeSound(void) const
+void	Animal::makeSound() const
 {
 	std::cout << "Animal makes weird noise" << std::endl;
 }
 
-std::string	Animal::getType(void) const
+std::string	Animal::getType() const
 {
 	return (this->_type);
 }

@@ -12,21 +12,17 @@
 
 #include "Dog.hpp"
 
-Dog::Dog(void)
+Dog::Dog(): Animal("Dog"), brain(new Brain)
 {
 	std::cout << "It is a dog!" << std::endl;
-	this->_type = "Dog";
-	this->brain = new Brain();
 }
 
-Dog::Dog(const Dog &obj)
+Dog::Dog(const Dog &obj): Animal(obj), brain(new Brain(*obj.brain))
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = obj;
-	this->brain = new Brain(*obj.brain);
 }
 
-Dog::~Dog(void)
+Dog::~Dog()
 {
 	delete this->brain;
 	std::cout << "Dog disappeared..." << std::endl;
@@ -35,12 +31,14 @@ Dog::~Dog(void)
 Dog &Dog::operator=(Dog const &obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
-	this->_type = obj.getType();
-	this->brain = new Brain(*obj.brain);
+    if (this != &obj){
+        this->_type = obj.getType();
+        this->brain = obj.brain;
+    }
 	return (*this);
 }
 
-void	Dog::makeSound(void) const
+void	Dog::makeSound() const
 {
 	std::cout << "Dog says Bark" << std::endl;
 }

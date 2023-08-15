@@ -3,10 +3,7 @@
 
 int	main( void )
 {
-//	Animal a;
-//
-//    a.makeSound();
-    Animal *animals[4] = {new Dog(), new Dog(), new Cat(), new Cat()};
+	Animal *animals[4] = {new Dog(), new Dog(), new Cat(), new Cat()};
 
     std::cout << std::endl;
     for (int i = 0; i < 4; i++){
@@ -14,5 +11,22 @@ int	main( void )
         std::cout << std::endl;
     }
 
+//    WrongAnimal *wrong_animals[4] = {new WrongCat(), new WrongCat(), new WrongCat(), new WrongCat()};
+//
+//    for (int i = 0; i < 4; i++){
+//        delete wrong_animals[i];
+//        std::cout << std::endl;
+//    }
+
+    Cat cat;
+    Cat cat2(cat);
+
+    std::cout << std::endl;
+    cat.getBrainAddress();
+    cat2.getBrainAddress();
+    std::cout << std::endl;
+
+
+//    system("leaks beestenboel");
     return 0;
 }

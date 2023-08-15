@@ -15,7 +15,7 @@ public:
 	Cat &operator=( const Cat &obj );
 
 	void	makeSound( void ) const;
-	void	pickBrain(void) const;
+    void     getBrainAddress() const;
 
 private:
 

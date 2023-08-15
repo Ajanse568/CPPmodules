@@ -1,6 +1,6 @@
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(void): _type("Animal")
+WrongAnimal::WrongAnimal(): _type("Animal")
 {
 	std::cout << "A wild animal appears." << std::endl;
 }
@@ -11,7 +11,7 @@ WrongAnimal::WrongAnimal(const WrongAnimal &obj)
 	*this = obj;
 }
 
-WrongAnimal::~WrongAnimal(void)
+WrongAnimal::~WrongAnimal()
 {
 	std::cout << "Animal disappeared..." << std::endl;
 	
@@ -24,12 +24,12 @@ WrongAnimal &WrongAnimal::operator=(WrongAnimal const &obj)
 	return (*this);
 }
 
-void	WrongAnimal::makeSound(void) const
+void	WrongAnimal::makeSound() const
 {
 	std::cout << "Animal makes weird noise" << std::endl;
 }
 
-std::string	WrongAnimal::getType(void) const
+std::string	WrongAnimal::getType() const
 {
 	return (this->_type);
 }

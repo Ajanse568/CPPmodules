@@ -15,6 +15,7 @@ public:
 	WrongCat &operator=( const WrongCat &obj );
 
 	void	makeSound( void ) const;
+    void     getBrainAddress() const;
 
 protected:
     Brain*	brain;

@@ -18,6 +18,8 @@ public:
 
 protected:
 
+    Animal(std::string type);
+
 	std::string	_type;
 
 };

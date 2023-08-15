@@ -12,19 +12,18 @@
 
 #include "Dog.hpp"
 
-Dog::Dog(void)
+Dog::Dog(): Animal("Dog")
 {
 	std::cout << "It is a dog!" << std::endl;
-	this->_type = "Dog";
 }
 
 Dog::Dog(const Dog &obj)
+: Animal(obj)
 {
 	std::cout << "Dog copied" << std::endl;
-	*this = obj;
 }
 
-Dog::~Dog(void)
+Dog::~Dog()
 {
 	std::cout << "Dog disappeared..." << std::endl;
 }
@@ -32,11 +31,13 @@ Dog::~Dog(void)
 Dog &Dog::operator=(Dog const &obj)
 {
 	std::cout << "Dog assigned" << std::endl;
-	this->_type = obj.getType();
+    if (this != &obj) {
+        this->_type = obj.getType();
+    }
 	return (*this);
 }
 
-void	Dog::makeSound(void) const
+void	Dog::makeSound() const
 {
 	std::cout << "Dog says Bark" << std::endl;
 }

@@ -22,6 +22,19 @@ int	main( void )
     Cat cat;
     Cat cat2(cat);
 
-    system("leaks beestenboel");
+    std::cout << std::endl;
+    cat.getBrainAddress();
+    cat2.getBrainAddress();
+    std::cout << std::endl;
+
+    WrongCat wr_cat;
+    WrongCat wr_cat2(wr_cat);
+
+    std::cout << std::endl;
+    wr_cat.getBrainAddress();
+    wr_cat2.getBrainAddress();
+    std::cout << std::endl;
+
+//    system("leaks beestenboel");
     return 0;
 }

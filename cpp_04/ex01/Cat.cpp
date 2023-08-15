@@ -12,20 +12,17 @@
 
 #include "Cat.hpp"
 
-Cat::Cat(void)
+Cat::Cat(): Animal("Cat"), brain(new Brain)
 {
 	std::cout << "It is a cat!" << std::endl;
-	this->_type = "Cat";
-	this->brain = new Brain();
 }
 
-Cat::Cat(const Cat &obj)
+Cat::Cat(const Cat &obj): Animal(obj), brain(new Brain(*obj.brain))
 {
-	std::cout << "Copy constructor called" << std::endl;
-	*this = obj;
+	std::cout << "CopyCat constructor called" << std::endl;
 }
 
-Cat::~Cat(void)
+Cat::~Cat()
 {
 	delete this->brain;
 	std::cout << "Cat disappeared..." << std::endl;
@@ -34,17 +31,18 @@ Cat::~Cat(void)
 Cat &Cat::operator=(Cat const &obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
-	this->_type = obj.getType();
-	this->brain = new Brain(*obj.brain);
+    if (this != &obj){
+        this->_type = obj.getType();
+        this->brain = obj.brain;
+    }
 	return (*this);
 }
 
-void	Cat::makeSound(void) const
+void	Cat::makeSound() const
 {
-	std::cout << "Cat says Miauw" << std::endl;
+	std::cout << "Cat says Miaow" << std::endl;
 }
 
-void	Cat::pickBrain(void) const
-{
-	std::cout << this->brain << std::endl;
+void    Cat::getBrainAddress() const {
+    std::cout << &brain << std::endl;
 }

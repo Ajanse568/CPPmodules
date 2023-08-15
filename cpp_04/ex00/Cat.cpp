@@ -12,19 +12,18 @@
 
 #include "Cat.hpp"
 
-Cat::Cat(void)
+Cat::Cat(): Animal("Cat")
 {
 	std::cout << "It is a cat!" << std::endl;
-	this->_type = "Cat";
 }
 
 Cat::Cat(const Cat &obj)
+: Animal(obj)
 {
 	std::cout << "You have yourself a CopyCat" << std::endl;
-	*this = obj;
 }
 
-Cat::~Cat(void)
+Cat::~Cat()
 {
 	std::cout << "Cat disappeared..." << std::endl;
 }
@@ -36,7 +35,7 @@ Cat &Cat::operator=(Cat const &obj)
 	return (*this);
 }
 
-void	Cat::makeSound(void) const
+void	Cat::makeSound() const
 {
 	std::cout << "Cat says Miauw" << std::endl;
 }
