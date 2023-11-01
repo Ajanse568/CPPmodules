@@ -1,13 +1,13 @@
-#include "Form.hpp"
+#include "AAForm.hpp"
 
-Form::Form(void): _name(), _signed(false), _sign_grade(150), _exc_grade(150)
+AForm::AForm(void): _name(), _signed(false), _sign_grade(150), _exc_grade(150)
 {
 	std::cout << "Default constructor called" << std::endl;
 	GradeTooHighException = "Grade will be too high";
 	GradeTooLowException = "Grade will be too low";
 }
 
-Form::Form( const std::string name, const int signgrade, const int excgrade )
+AForm::AForm( const std::string name, const int signgrade, const int excgrade )
 : _name(name), _signed(false), _sign_grade(signgrade), _exc_grade(excgrade)
 {
 	
@@ -20,18 +20,18 @@ Form::Form( const std::string name, const int signgrade, const int excgrade )
         throw GradeTooLowException;
 }
 
-Form::Form(const Form &obj)
+AForm::AForm(const AForm &obj)
 : _name(obj.getName()), _signed(isSigned()), _sign_grade(obj.getSignGrade()), _exc_grade(obj.getExcGrade())
 {
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Form::~Form(void)
+AForm::~AForm(void)
 {
 	std::cout << "Destructor called" << std::endl;
 }
 
-void    Form::beSigned( const Bureaucrat &signee)
+void    AForm::beSigned( const Bureaucrat &signee)
 {
     if (signee.getGrade() > _sign_grade)
         throw GradeTooLowException;

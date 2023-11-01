@@ -1,5 +1,5 @@
-#ifndef __FORM_H__
-#define __FORM_H__
+#ifndef __AForm_H__
+#define __AForm_H__
 
 #include <ostream>
 #include "Bureaucrat.hpp"
@@ -7,20 +7,21 @@
 class Bureaucrat;
 class CustomException;
 
-class Form
+class AForm
 {
 public:
 
-	Form( void );
-	Form( const std::string name, const int signgrade, const int excgrade );
-	Form( const Form &obj );
-	~Form();
+	AForm( void );
+	AForm( const std::string name, const int signgrade, const int excgrade );
+	AForm( const AForm &obj );
+	~AForm();
 
 	void				beSigned ( const Bureaucrat &signee);
 	const std::string	getName( void ) const { return _name;};
 	bool				isSigned( void ) const { return _signed; };
 	int					getSignGrade( void ) const { return _sign_grade; };
 	int					getExcGrade( void ) const  { return _exc_grade; };
+    virtual void        execute(Bureaucrat const & executor) const = 0;
 
 private:
 
@@ -33,6 +34,6 @@ private:
 	CustomException		GradeTooLowException;
 };
 
-std::ostream & operator << (std::ostream &out, const Form &c);
+std::ostream & operator << (std::ostream &out, const AForm &c);
 
 #endif
