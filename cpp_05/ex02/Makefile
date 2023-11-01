@@ -1,9 +1,11 @@
 SRCS =	Bureaucrat.cpp\
-		Form.cpp\
+		PresidentialPardonForm.cpp\
+		AForm.cpp\
 		main.cpp
 
 INCL =	Bureaucrat.hpp\
-		Form.hpp
+		PresidentialPardonForm.hpp\
+		AForm.hpp
 
 CPP = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98

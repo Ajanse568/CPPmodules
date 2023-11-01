@@ -1,12 +1,16 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
 	try
 	{
-        Bureaucrat  bert(31, "Bert");
+		PresidentialPardonForm form("Bender");
+		Bureaucrat bureaucrat(30, "Harm Konraad");
 
+		form.beSigned(bureaucrat);
+		form.execute(bureaucrat);
 	}
 	catch(const std::exception& e)
 	{

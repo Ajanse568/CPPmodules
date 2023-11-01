@@ -1,10 +1,16 @@
 #include "Form.hpp"
 
+const char* Form::GradeTooHighException::what() const throw() {
+    return ("Grade too high");
+}
+
+const char* Form::GradeTooLowException::what() const throw() {
+    return ("Grade too low");
+}
+
 Form::Form(void): _name(), _signed(false), _sign_grade(150), _exc_grade(150)
 {
 	std::cout << "Default constructor called" << std::endl;
-	GradeTooHighException = "Grade will be too high";
-	GradeTooLowException = "Grade will be too low";
 }
 
 Form::Form( const std::string name, const int signgrade, const int excgrade )
@@ -12,12 +18,10 @@ Form::Form( const std::string name, const int signgrade, const int excgrade )
 {
 	
 	std::cout << "Param constructor called" << std::endl;
-	GradeTooHighException = "Grade will be too high";
-	GradeTooLowException = "Grade will be too low";
     if (signgrade < 1 || excgrade < 1)
-        throw GradeTooHighException;
+        throw Form::GradeTooHighException();
     else if (signgrade > 150 || excgrade > 150)
-        throw GradeTooLowException;
+        throw Form::GradeTooLowException();
 }
 
 Form::Form(const Form &obj)
@@ -34,7 +38,18 @@ Form::~Form(void)
 void    Form::beSigned( const Bureaucrat &signee)
 {
     if (signee.getGrade() > _sign_grade)
-        throw GradeTooLowException;
+        throw Form::GradeTooLowException();
     else
         _signed = true;
+}
+
+std::ostream & operator << (std::ostream &out, const Form &c) {
+    out << c.getName();
+    if (c.isSigned())
+        out << " is signed, ";
+    else
+        out << " is not signed, ";
+    out << "sign grade " << c.getSignGrade() << " and exc grade " << c.getExcGrade() << ".";
+    return (out);
+
 }

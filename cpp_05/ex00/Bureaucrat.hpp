@@ -3,20 +3,6 @@
 
 #include <iostream>
 
-class CustomException : public std::exception
-{
-
-private:
-
-	const char*	_msg;
-
-public:
-
-	CustomException &operator=( const char* msg );
-
-	virtual const char*	what() const throw();
-};
-
 class Bureaucrat
 {
 public:
@@ -35,8 +21,15 @@ private:
 
 	const std::string	_name;
 	int					_grade;
-	CustomException		GradeTooHighException;
-	CustomException		GradeTooLowException;
+
+    class GradeTooHighException : public std::exception {
+        public:
+            virtual const char* what() const throw() ;
+    } ;
+    class GradeTooLowException : public std::exception {
+        public:
+            virtual const char* what() const throw() ;
+    } ;
 
 };
 

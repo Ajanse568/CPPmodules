@@ -1,4 +1,4 @@
-#include "AForm.hpp"
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
 int main()
@@ -6,10 +6,11 @@ int main()
 	try
 	{
         Bureaucrat  bert(31, "Bert");
-		AForm	    test("testAForm", 30, 45);
-        bert.signAForm(test);
+		Form	    test("testAForm", 30, 45);
+		std::cout << test << std::endl;
+        bert.signForm(test);
         bert.incrementGrade();
-        bert.signAForm(test);
+        bert.signForm(test);
 	}
 	catch(const std::exception& e)
 	{
