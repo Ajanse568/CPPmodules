@@ -1,4 +1,4 @@
-SRCS =	ScalarConverter.cpp\
+SRCS =	Serializer.cpp\
 		main.cpp
 
 CPP = c++
@@ -7,7 +7,7 @@ CFLAGS = -Wall -Wextra -Werror
 COMPILE = $(CPP) $(CFLAGS)
 RM = rm -f
 
-NAME = convert
+NAME = serialize
 
 all: $(NAME)
 

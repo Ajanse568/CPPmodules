@@ -8,18 +8,15 @@
 
 int main()
 {
-    AForm* rrf;
-
     try
     {
-        Bureaucrat jack(10, "Jack");
         Intern someRandomIntern;
-        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-        jack.executeForm(*rrf);
-//        delete rrf;
-        jack.signForm(*rrf);
-        jack.executeForm(*rrf);
-        someRandomIntern.makeForm("Robomtomy Request", "Bender");
+        AForm* formpie;
+        Bureaucrat  Bert(1, "Bert");
+        formpie = someRandomIntern.makeForm("robotomy request", "Bender");
+        Bert.signForm(*formpie);
+        Bert.executeForm(*formpie);
+        someRandomIntern.makeForm("blaaa", "Bender");
     }
     catch(const std::exception& e)
     {

@@ -15,11 +15,13 @@ public:
 	Form( const Form &obj );
 	~Form();
 
+	Form &operator = ( const Form &obj );
+
 	void				beSigned ( const Bureaucrat &signee);
-	const std::string	getName( void ) const { return _name;};
-	bool				isSigned( void ) const { return _signed; };
-	int					getSignGrade( void ) const { return _sign_grade; };
-	int					getExcGrade( void ) const  { return _exc_grade; };
+	const std::string	getName( void ) const;
+	bool				isSigned( void ) const;
+	int					getSignGrade( void ) const;
+	int					getExcGrade( void ) const;
 
 private:
 

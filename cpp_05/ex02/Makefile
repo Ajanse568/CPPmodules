@@ -7,6 +7,8 @@ SRCS =	Bureaucrat.cpp\
 
 INCL =	Bureaucrat.hpp\
 		PresidentialPardonForm.hpp\
+		ShrubberyCreationForm.hpp\
+		RobotomyRequestForm.hpp\
 		AForm.hpp
 
 CPP = c++

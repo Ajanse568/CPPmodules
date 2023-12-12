@@ -2,11 +2,11 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("default") {
-    std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
+
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
-    std::cout << "ShrubberyCreationForm constructor called" << std::endl;
+
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), _target(other._target) {
@@ -14,22 +14,26 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
-    std::cout << "ShrubberyCreationForm assignment operator called" << std::endl;
+
     if (this != &other) {
         AForm::operator=(other);
-        _target = other._target;
+        this->_target = other._target;
     }
     return *this;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
-    std::cout << "ShrubberyCreationForm destructor called" << std::endl;
+
+}
+
+std::string ShrubberyCreationForm::getTarget(void) const {
+    return this->_target;
 }
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
     AForm::checkExec(executor.getGrade());
-    std::string filename = _target + "_shrubbery";
-    std::ofstream ofs(filename);
+    std::string filename = this->_target + "_shrubbery";
+    std::ofstream ofs(filename.c_str());
     if (ofs.is_open()) {
         ofs << "      /\\\n"
                "     /\\*\\\n"

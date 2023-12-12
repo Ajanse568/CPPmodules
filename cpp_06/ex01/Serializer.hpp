@@ -9,6 +9,7 @@
 
 struct Data {
     int i;
+    std::string s;
 };
 class Serializer {
 
@@ -20,7 +21,7 @@ private:
 public:
 
     static uintptr_t serialize(Data* ptr);
-    static Data* deserialize(void* raw);
+    static Data* deserialize(uintptr_t raw);
 };
 
 

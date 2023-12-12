@@ -7,41 +7,25 @@
 
 int main(void)
 {
-    Bureaucrat 				jack(6, "Jack");
-    Bureaucrat 				Bob(100, "Bob");
-    Bureaucrat 				Charles(149, "Charles");
-    PresidentialPardonForm	president("Victor");
-    RobotomyRequestForm 	robot("Beep");
-    ShrubberyCreationForm 	tree1("tree_1");
-    ShrubberyCreationForm 	tree2("tree_2");
-    try
-    {
-        jack.incrementGrade();
-        std::cout << jack << std::endl;
-        jack.executeForm(president);
-        jack.signForm(president);
-        jack.executeForm(robot);
-        jack.signForm(robot);
-        jack.executeForm(robot);
-        jack.executeForm(robot);
-    }
-    catch (std::exception & e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+    Bureaucrat  Bert(1, "Bert");
+    Bureaucrat  Ernie(150, "Ernie");
+    Bureaucrat  koekie(42, "koekie");
+    PresidentialPardonForm  pardon("Bert");
+    RobotomyRequestForm     robot("Ernie");
+    ShrubberyCreationForm   shrub("koekie");
 
-    try
-    {
-        Bob.signForm(tree1);
-        Bob.executeForm(tree1);
-        Charles.executeForm(tree2);
-        Bob.executeForm(robot);
-        Bob.executeForm(president);
-        std::cout << Bob << std::endl;
-        std::cout << Bob.getGrade() << std::endl;
-    }
-    catch (std::exception & e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+    std::cout << pardon << std::endl;
+    std::cout << robot << std::endl;
+    std::cout << shrub << std::endl;
+
+    
+    Bert.executeForm(pardon);
+    Bert.signForm(pardon);
+    Bert.executeForm(pardon);
+    Ernie.executeForm(robot);
+    Ernie.signForm(robot);
+    Ernie.executeForm(robot);
+    koekie.executeForm(shrub);
+    koekie.signForm(shrub);
+    koekie.executeForm(shrub);
 }

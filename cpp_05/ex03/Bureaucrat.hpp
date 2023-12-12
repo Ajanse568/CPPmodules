@@ -5,20 +5,6 @@
 
 class AForm;
 
-class CustomException : public std::exception
-{
-
-private:
-
-	const char*	_msg;
-
-public:
-
-	CustomException &operator=( const char* msg );
-
-	virtual const char*	what() const throw();
-};
-
 class Bureaucrat
 {
 public:

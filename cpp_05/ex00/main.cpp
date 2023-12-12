@@ -13,5 +13,19 @@ int main()
 	{
 		std::cerr << e.what() << '\n';
 	}
+	try{
+		Bureaucrat	test2(0, "Test2");
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try{
+		Bureaucrat	test2(151, "Test2");
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return (0);
 }

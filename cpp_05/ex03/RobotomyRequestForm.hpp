@@ -16,7 +16,7 @@ public:
     RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 
     void        execute(const Bureaucrat& executor) const;
-    std::string getTarget(void) const { return _target; };
+    std::string getTarget(void) const;
 
 private:
 

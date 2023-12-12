@@ -27,13 +27,6 @@ public:
     AForm* makeRobotomy(const std::string &target);
 
     AForm* makeForm(const std::string &name, const std::string &target);
-
-    class WrongNameException: public std::exception{
-        virtual const char* what() const throw() {
-            return( "No form with that name");
-        }
-
-    };
 };
 
 

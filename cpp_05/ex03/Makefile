@@ -3,10 +3,14 @@ SRCS =	Bureaucrat.cpp\
 		ShrubberyCreationForm.cpp\
 		RobotomyRequestForm.cpp\
 		AForm.cpp\
+		Intern.cpp\
 		main.cpp
 
 INCL =	Bureaucrat.hpp\
 		PresidentialPardonForm.hpp\
+		ShrubberyCreationForm.hpp\
+		RobotomyRequestForm.hpp\
+		Intern.hpp\
 		AForm.hpp
 
 CPP = c++
