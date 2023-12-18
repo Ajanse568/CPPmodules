@@ -32,7 +32,7 @@ private:
         IMPOSSIBLE
     };
 
-    static Type     checkType( std::string& str );
+    static Type     checkType( std::string str );
 
    template <typename T> static void printCast(T type)
    {

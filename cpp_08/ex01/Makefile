@@ -1,18 +1,17 @@
-SRCS =	ScalarConverter.cpp\
+SRCS =	Span.cpp\
 		main.cpp
 
-INCL = ScalarConverter.hpp
 CPP = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++11
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 COMPILE = $(CPP) $(CFLAGS)
 RM = rm -f
 
-NAME = convert
+NAME = containers
 
 all: $(NAME)
 
-$(NAME): $(SRCS) $(INCL)
+$(NAME): $(SRCS)
 	$(COMPILE) $(SRCS) -o $(NAME)
 
 clean:

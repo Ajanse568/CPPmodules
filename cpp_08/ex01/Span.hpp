@@ -13,7 +13,7 @@ class Span {
 public:
 
         Span(unsigned int n);
-        Span(const Span &obj) { *this = obj; };
+        Span(const Span &obj);
         ~Span();
 
         Span &operator=(const Span &obj);
@@ -21,6 +21,9 @@ public:
         void addNumber(int n);
         int shortestSpan();
         int longestSpan();
+
+        unsigned int        size() const;
+        std::vector<int>    getContainer() const;
 
         template <class InputIterator>
         void addNumbers(InputIterator first, InputIterator last)

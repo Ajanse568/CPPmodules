@@ -13,15 +13,14 @@ public:
 
     Array() : _array(NULL), _size(0) {}
     Array(unsigned int n) : _array(new T[n]), _size(n) {}
-    Array(const Array &obj) : _array(NULL), _size(0) { *this = obj; }
+    Array(const Array &obj) : _array(new T[obj.size()]), _size(obj.size()) { *this = obj; }
     ~Array() { delete [] _array; }
 
     Array &operator=(const Array &obj) {
+        unsigned int size;
         if (this != &obj) {
-            delete [] _array;
-            _array = new T[obj._size];
-            _size = obj._size;
-            for (unsigned int i = 0; i < _size; i++)
+            size = this->size() <= obj.size() ? this->size() : obj.size();
+            for (unsigned int i = 0; i < size; i++)
                 _array[i] = obj._array[i];
         }
         return *this;

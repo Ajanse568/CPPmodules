@@ -6,6 +6,7 @@
 #define CPPMODULES_SERIALIZER_HPP
 
 #include <iostream>
+#include <stdint.h>
 
 struct Data {
     int i;

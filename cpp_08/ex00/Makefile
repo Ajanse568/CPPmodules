@@ -1,18 +1,16 @@
-SRCS =	Serializer.cpp\
-		main.cpp
+SRCS =	main.cpp
 
-INCL = Serializer.hpp
 CPP = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 COMPILE = $(CPP) $(CFLAGS)
 RM = rm -f
 
-NAME = serialize
+NAME = containers
 
 all: $(NAME)
 
-$(NAME): $(SRCS) $(INCL)
+$(NAME): $(SRCS)
 	$(COMPILE) $(SRCS) -o $(NAME)
 
 clean:

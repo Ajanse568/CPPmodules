@@ -1,20 +1,12 @@
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter() {
-}
+ScalarConverter::ScalarConverter() = default;
 
-ScalarConverter::~ScalarConverter() {
-}
+ScalarConverter::~ScalarConverter() = default;
 
-ScalarConverter::ScalarConverter(const ScalarConverter &obj) {
-    *this = obj;
-}
+ScalarConverter::ScalarConverter(const ScalarConverter &obj) = default;
 
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter &obj) {
-    if (this == &obj)
-        return (*this);
-    return (*this);
-}
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &obj) = default;
 
 bool is_digits(std::string& str)
 {
@@ -26,7 +18,7 @@ bool is_digits(std::string& str)
     return true;
 }
 
-ScalarConverter::Type ScalarConverter::checkType(std::string &str) {
+ScalarConverter::Type ScalarConverter::checkType(std::string str) {
     std::string preDec;
     std::string postDec;
 
@@ -58,6 +50,7 @@ ScalarConverter::Type ScalarConverter::checkType(std::string &str) {
 
 void ScalarConverter::convert(std::string &str) {
     Type type = checkType(str);
+
     switch (type) {
         case CHAR:
             printCast(static_cast<char>(str[0]));
