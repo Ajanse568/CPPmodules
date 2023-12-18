@@ -15,10 +15,10 @@ int main() {
     iter(arr1, 5, print<int>);
 
 
-    std::string arr4[] = { "one", "two", "three", "four", "five" };
+    std::string arr2[] = { "one", "two", "three", "four", "five" };
 
-    std::cout << "\narr4: " << std::endl;
-    iter(arr4, 5, print<std::string>);
+    std::cout << "\narr2: " << std::endl;
+    iter(arr2, 5, print<std::string>);
 
     return 0;
 }

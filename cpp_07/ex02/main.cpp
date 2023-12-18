@@ -3,32 +3,61 @@
 //
 
 #include "Array.hpp"
+#include <iostream>
 
 int main()
 {
     Array<int> intArray(5);
+	unsigned int i;
     std::cout << intArray.size() << std::endl;
     intArray[0] = 1;
     intArray[1] = 2;
-    std::cout << "intArray[0]: " << intArray[0] << std::endl;
-    std::cout << "intArray[1]: " << intArray[1] << std::endl;
-    std::cout << "intArray[2]: " << intArray[2] << std::endl << std::endl;
+	std::cout << "intArray" << std::endl;
+	std::cout << "[";
+    for(i = 0; i < intArray.size() - 1; i++)
+		std::cout  << intArray[i] << ", ";
+	std:: cout << intArray[i] << "]" << std::endl << std::endl;
 
     Array<int> intArray2(intArray);
-    std::cout << "intArray2[0]: " << intArray2[0] << std::endl;
+	std::cout << "intArray2(intArray)" << std::endl;
+	std::cout << "intArray2" << std::endl;
+	std::cout << "[";
+	for(i = 0; i < intArray2.size() - 1; i++)
+		std::cout  << intArray2[i] << ", ";
+	std:: cout << intArray2[i] << "]" << std::endl << std::endl;
     intArray2[0]++;
-    std::cout << "intArray2[0]++" << std::endl;
-    std::cout << "intArray2[0]: " << intArray2[0] << std::endl;
-    std::cout << "intArray[0]: " << intArray[0] << std::endl << std::endl;
+	std::cout << "intArray2[0]++" << std::endl;
+	std::cout << "intArray" << std::endl;
+	std::cout << "[";
+	for(i = 0; i < intArray.size() - 1; i++)
+		std::cout  << intArray[i] << ", ";
+	std:: cout << intArray[i] << "]" << std::endl;
+	std::cout << "intArray2" << std::endl;
+	std::cout << "[";
+	for(i = 0; i < intArray2.size() - 1; i++)
+		std::cout  << intArray2[i] << ", ";
+	std:: cout << intArray2[i] << "]" << std::endl << std::endl;
 
     Array<int>  intArray3(3);
     intArray3 = intArray2;
-    std::cout << "intArray3[0]: " << intArray3[0] << std::endl;
-    intArray3[0]++;
-    std::cout << "intArray3[0]++" << std::endl;
-    std::cout << "intArray3[0]: " << intArray3[0] << std::endl;
-    std::cout << "intArray2[0]: " << intArray2[0] << std::endl;
-    std::cout << "intArray2[3]: " << intArray2[3] << std::endl;
+	std::cout << "intArray3(3)" << std::endl << "intArray3 = intArray2" << std::endl;
+	std::cout << "intArray3" << std::endl;
+	std::cout << "[";
+	for(i = 0; i < intArray3.size() - 1; i++)
+		std::cout  << intArray3[i] << ", ";
+	std:: cout << intArray3[i] << "]" << std::endl << std::endl;
+	intArray3[0]++;
+	std::cout << "intArray3[0]++" << std::endl;
+	std::cout << "intArray" << std::endl;
+	std::cout << "[";
+	for(i = 0; i < intArray2.size() - 1; i++)
+		std::cout  << intArray2[i] << ", ";
+	std:: cout << intArray2[i] << "]" << std::endl;
+	std::cout << "intArray3" << std::endl;
+	std::cout << "[";
+	for(i = 0; i < intArray3.size() - 1; i++)
+		std::cout  << intArray3[i] << ", ";
+	std:: cout << intArray3[i] << "]" << std::endl << std::endl;
     try {
         std::cout << intArray3[3] << std::endl;
     } catch (const std::exception& e) {

@@ -29,8 +29,13 @@ public:
     T &operator[](unsigned int i) {
         if (i >= _size)
             throw std::exception();
-        return _array[i];
+        return this->_array[i];
     }
+	const T &operator[](unsigned int i) const{
+		if (i >= _size)
+			throw std::exception();
+		return this->_array[i];
+	}
 
     unsigned int size() const { return _size; }
 
