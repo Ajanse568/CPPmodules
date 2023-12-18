@@ -28,6 +28,9 @@ int main() {
         v.push_back(std::rand());
     spanBig.addNumbers(v.begin(), v.end());
 
+	std::cout << spanBig.shortestSpan() << std::endl;
+	std::cout << spanBig.longestSpan() << std::endl;
+
     try{
         sp.addNumbers(v.begin(), v.end());
     } catch (const std::exception& e) {

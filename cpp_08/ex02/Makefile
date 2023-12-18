@@ -1,7 +1,6 @@
-SRCS =	Span.cpp\
-		main.cpp
+SRCS =	main.cpp
 
-INCL = Span.hpp
+INCL = MutantStack.hpp
 
 CPP = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98

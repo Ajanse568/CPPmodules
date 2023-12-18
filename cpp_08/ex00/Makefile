@@ -1,5 +1,7 @@
 SRCS =	main.cpp
 
+INCL = easyfind.hpp
+
 CPP = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -10,7 +12,7 @@ NAME = containers
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
+$(NAME): $(SRCS) $(INCL)
 	$(COMPILE) $(SRCS) -o $(NAME)
 
 clean:
