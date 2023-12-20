@@ -1,15 +1,13 @@
-SRCS =	BitcoinExchange.cpp \
+SRCS =	PmergeMe.cpp \
 		main.cpp
 
-INCL = BitcoinExchange.hpp
-
 CPP = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++20 -g
+CFLAGS = -Wall -Wextra -Werror -g
 
 COMPILE = $(CPP) $(CFLAGS)
 RM = rm -f
 
-NAME = btc
+NAME = PmergeMe
 
 all: $(NAME)
 
