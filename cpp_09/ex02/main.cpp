@@ -21,6 +21,7 @@ int	main(int ac, char **av) {
 			return 1;
 		}
 	}
-	p.sortDeque();
+	// p.sortList();
+	p.sortVector();
 	return 0;
 }

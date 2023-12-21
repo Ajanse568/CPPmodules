@@ -1,39 +1,27 @@
 #include "PmergeMe.hpp"
 #include <algorithm>
 
-PmergeMe::PmergeMe() {}
-
-PmergeMe::PmergeMe(PmergeMe const &copy) {
-	*this = copy;
-}
-
-PmergeMe::~PmergeMe() {}
-
-PmergeMe &PmergeMe::operator=(PmergeMe const &copy) {
-	if (this != &copy) {
-		_v = copy._v;
-		_l = copy._l;
-	}
-	return *this;
-}
-
-void PmergeMe::addNumber(int n) {
-	_v.push_back(n);
-	_l.push_back(n);
-}
-
 struct pend_el {
-	std::list<int>::iterator 						it;
-	std::list<std::list<int>::iterator>::iterator	higher;
-	int												step_size;
+	std::vector<int>::iterator 	it;
+	int                     	higher;
+	int							step_size;
 };
 
-bool	it_comp(pend_el pend, std::list<int>::iterator main) {
+bool	it_comp(pend_el pend, std::vector<int>::iterator main) {
 
 	return(*(std::next(pend.it, (pend.step_size - 1))) < *(std::next(main, (pend.step_size - 1))));
 }
 
-void	PmergeMe::mergeInsertlist(std::list<int>::iterator first, std::list<int>::iterator last, int step_size) {
+int getLast(std::vector<std::vector<int>::iterator> main, int val) {
+    int count = 0;
+    for (std::vector<std::vector<int>::iterator>::iterator it = main.begin(); it != main.end(); std::advance(it, 1)){
+        if (**it == val)
+            return (count);
+        count++;
+    }
+    return count;
+}
+void	PmergeMe::mergeInsertvector(std::vector<int>::iterator first, std::vector<int>::iterator last, int step_size) {
 	static constexpr std::uint_least64_t jacobsthal_diff[] = {
         2u, 2u, 6u, 10u, 22u, 42u, 86u, 170u, 342u, 682u, 1366u,
         2730u, 5462u, 10922u, 21846u, 43690u, 87382u, 174762u, 349526u, 699050u,
@@ -55,28 +43,29 @@ void	PmergeMe::mergeInsertlist(std::list<int>::iterator first, std::list<int>::i
 	if (size < 2)
 		return;
 
-	std::list<int>::iterator end = uneven ? std::prev(last, step_size): last;
-	for (std::list<int>::iterator it = first; it != end; std::advance(it, step_size * 2)) {
+	std::vector<int>::iterator end = uneven ? std::prev(last, step_size): last;
+	for (std::vector<int>::iterator it = first; it != end; std::advance(it, step_size * 2)) {
 		if(*std::next(it, step_size - 1) > *std::next(it, step_size *2 -1))
 			std::swap_ranges(it, std::next(it, step_size), std::next(it, step_size));
 	}
 
-	mergeInsertlist(first, end, step_size * 2);
+	mergeInsertvector(first, end, step_size * 2);
 
-	std::list<std::list<int>::iterator> main = {first, std::next(first, step_size)};
-	std::list<pend_el> pend;
+	std::vector<std::vector<int>::iterator> main = {first, std::next(first, step_size)};
+	std::vector<pend_el> pend;
 
-	for (std::list<int>::iterator it = std::next(first, step_size * 2); it != end; std::advance(it, step_size * 2)) {
+    main.reserve(size);
+	for (std::vector<int>::iterator it = std::next(first, step_size * 2); it != end; std::advance(it, step_size * 2)) {
 		main.push_back(std::next(it, step_size));
 		pendie.it = it;
-		pendie.higher = std::prev(main.end());
+		pendie.higher = **std::prev(main.end());
 		pendie.step_size = step_size;
 		pend.push_back(pendie);
 	}
 
 	if(uneven) {
 		pendie.it = end;
-		pendie.higher = main.end();
+		pendie.higher = -1;
 		pendie.step_size = step_size;
 		pend.push_back(pendie);
 	}
@@ -85,12 +74,16 @@ void	PmergeMe::mergeInsertlist(std::list<int>::iterator first, std::list<int>::i
 		std::uint_least64_t dist = jacobsthal_diff[i];
 		if (dist >= pend.size())
 			break;
-		std::list<pend_el>::iterator it = pend.begin();
+		std::vector<pend_el>::iterator it = pend.begin();
 		std::advance(it, dist - 1);
 
 		while (true)
 		{
-			std::list<std::list<int>::iterator>::iterator insertion = std::upper_bound(main.begin(), it->higher, *it, it_comp);
+			std::vector<std::vector<int>::iterator>::iterator insertion;
+            if (it->higher < 0)
+                insertion = std::upper_bound(main.begin(), main.end(), *it, it_comp);
+            else
+                insertion = std::upper_bound(main.begin(), std::next(main.begin(), getLast(main, it->higher)), *it, it_comp);
 			main.insert(insertion, it->it);
             it = pend.erase(it);
             if (it == pend.begin()) break;
@@ -99,14 +92,18 @@ void	PmergeMe::mergeInsertlist(std::list<int>::iterator first, std::list<int>::i
 	}
 
 	while (!pend.empty()) {
-		std::list<pend_el>::iterator pit = std::prev(pend.end());
-		std::list<std::list<int>::iterator>::iterator insertion = std::upper_bound(main.begin(), pit->higher, *pit, it_comp);
+		std::vector<pend_el>::iterator pit = std::prev(pend.end());
+		std::vector<std::vector<int>::iterator>::iterator insertion;
+        if (pendie.higher < 0)
+            insertion = std::upper_bound(main.begin(), main.end(), *pit, it_comp);
+        else
+            insertion = std::upper_bound(main.begin(), std::next(main.begin(), getLast(main, pit->higher)), *pit, it_comp);
 		main.insert(insertion, pit->it);
 		pend.pop_back();
 	}
 
-	std::list<int> swap;
-	for (std::list<std::list<int>::iterator>::iterator it = main.begin(); it != main.end(); std::advance(it, 1)) {
+	std::vector<int> swap;
+	for (std::vector<std::vector<int>::iterator>::iterator it = main.begin(); it != main.end(); std::advance(it, 1)) {
 		for (int i = 0; i < step_size; i++)
 			swap.push_back(*std::next(*it, i));
 	}
@@ -114,10 +111,12 @@ void	PmergeMe::mergeInsertlist(std::list<int>::iterator first, std::list<int>::i
 		*(std::next(first, i)) = *(std::next(swap.begin(), i));
 } 
 
-void PmergeMe::sortList() {
-	mergeInsertlist(_l.begin(), _l.end(), 1);
-	std::cout << std::endl << std::endl;
-	for (auto it = _l.begin(); it != _l.end(); ++it)
+void PmergeMe::sortVector() {
+    
+    mergeInsertvector(_v.begin(), _v.end(), 1);
+
+    std::cout << std::endl;
+	for (auto it = _v.begin(); it != _v.end(); ++it)
         std::cout << ' ' << *it;
 	std::cout << std::endl;
 }

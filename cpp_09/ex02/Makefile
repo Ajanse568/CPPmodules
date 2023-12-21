@@ -1,4 +1,5 @@
 SRCS =	PmergeMe.cpp \
+		PmergeMeV.cpp \
 		main.cpp
 
 CPP = c++
