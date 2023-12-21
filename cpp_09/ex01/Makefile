@@ -1,15 +1,12 @@
-SRCS =	BitcoinExchange.cpp \
-		main.cpp
-
-INCL = BitcoinExchange.hpp
+SRCS =	main.cpp
 
 CPP = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++20 
+CFLAGS = -Wall -Wextra -Werror 
 
 COMPILE = $(CPP) $(CFLAGS)
 RM = rm -f
 
-NAME = btc
+NAME = RPN
 
 all: $(NAME)
 

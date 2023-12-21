@@ -1,21 +1,25 @@
 #include "BitcoinExchange.hpp"
 #include <fstream>
+#include <iomanip>
 
-BitcoinExchange::BitcoinExchange() {
+bool checkString(std::string& rpn) {
+	if (rpn.empty())
+		throw std::invalid_argument("Error: empty string");
+	size_t onlywhite = rpn.find_first_not_of(" \t");
+	size_t valid = rpn.find_first_not_of("0123456789-| \t");
+	if (onlywhite == std::string::npos || valid != std::string::npos)
+		throw std::invalid_argument("Error: invalid string");
+	return (true);
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj) {
-	*this = obj;
-}
+BitcoinExchange::BitcoinExchange() = default;
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj) =default;
 
 BitcoinExchange::~BitcoinExchange() {
 }
 
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj) {
-	if (this != &obj)
-		*this = obj;
-	return (*this);
-}
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj) = default;
 
 BitcoinExchange::BitcoinExchange(std::string filename) {
 	std::ifstream file(filename);
@@ -50,34 +54,60 @@ void BitcoinExchange::printData(std::string inputfile) {
 	}
 
 	std::getline(file, line);
-	if (!line.empty() && line != "date | value")
-		handleLine(line);
-	while (std::getline(file, line))
-		handleLine(line);
+	if (line != "date | value"){
+		try {
+			checkString(line);
+			handleLine(line);
+		} catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
+	}
+	while (std::getline(file, line)){
+		try {
+			checkString(line);
+			handleLine(line);
+		} catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
+	}
 }
 
 void BitcoinExchange::handleLine(std::string line) {
-	std::string delimiter = " | ";
+	std::string delimiter = "|";
 	std::string date = line.substr(0, line.find(delimiter));
 	std::string value = line.substr(line.find(delimiter) + delimiter.length());
-	int	valueInt;
+	int			valueInt;
 	std::chrono::year_month_day ymd;
 	std::chrono::year_month_day now(std::chrono::floor<std::chrono::days>(std::chrono::system_clock::now()));
 
-	ymd = handleDate(date);
-	if (!ymd.ok())
-		std::cout << "Error: wrong date format" << std::endl;
-	if (ymd > now)
-		std::cout << "Error: date is in the future" << std::endl;
 	try{
+		ymd = handleDate(date);
 		valueInt = std::stoi(value);
 	} catch (std::exception &e) {
-		std::cout << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << "Not a valid integer" << std::endl;
 		return ;
 	}
+	if (!ymd.ok()){	
+		std::cout << "Error: wrong date format" << std::endl;
+		return ;
+	}
+	if (ymd > now) {
+		std::cout << "Error: date is in the future ->" << std::endl;
+		printDate(ymd);
+		std::cout << std::endl;
+		return ;
+	}
+	if (ymd < this->_data.begin()->first) {
+		std::cout << "Error: no data for this date -> ";
+		printDate(ymd);
+		std::cout << std::endl;
+		return ;
+	}
+
 	if (valueInt < 0 || valueInt > 1000)
-		std::cout << "Error: value is out of range" << std::endl;
-	printRateCalculation(ymd, valueInt);
+		std::cout << "Error: value is out of range -> " << valueInt << std::endl;
+	else
+		printRateCalculation(ymd, valueInt);
 }
 
 std::chrono::year_month_day BitcoinExchange::handleDate(std::string date) {
@@ -86,19 +116,19 @@ std::chrono::year_month_day BitcoinExchange::handleDate(std::string date) {
 	std::string month = date.substr(date.find(delimiter) + delimiter.length(), date.find(delimiter, date.find(delimiter) + delimiter.length()));
 	std::string day = date.substr(date.find(delimiter, date.find(delimiter) + delimiter.length()) + delimiter.length());
 
-	try{
-		std::chrono::year_month_day ymd(std::chrono::year(std::stoi(year)), std::chrono::month(std::stoi(month)), std::chrono::day(std::stoi(day)));
-		return (ymd);
-	} catch (std::exception &e) {
-		std::cout << "Error: " << e.what() << std::endl;
-		return (std::chrono::year_month_day());
-	}
-
-	
+	std::chrono::year_month_day ymd(std::chrono::year(std::stoi(year)), std::chrono::month(std::stoi(month)), std::chrono::day(std::stoi(day)));
+	return (ymd);	
 }
 
-void	BitcoinExchange::printRateCalculation(std::chrono::year_month_day date, int rate) {
-	std::map<std::chrono::year_month_day, float>::iterator it = _data.lower_bound(date);
+void	BitcoinExchange::printRateCalculation(std::chrono::year_month_day date, int value) {
+	std::map<std::chrono::year_month_day, float>::iterator it = std::prev(_data.upper_bound(date), 1);
 
-	std <<
+	std::cout << static_cast<int>(date.year()) << "-" << std::setfill('0') << std::setw(2) << static_cast<unsigned int>(date.month()) << "-" << std::setfill('0') << std::setw(2) << static_cast<unsigned int>(date.day());
+	std::cout << " => " << value << " = " << value * it->second << " Rate used: " << std::fixed << std::setprecision(2)<< it->second;
+	std::cout << " (" << static_cast<int>(it->first.year()) << "-" << std::setfill('0') << std::setw(2) << static_cast<unsigned int>(it->first.month()) << "-" << std::setfill('0') << std::setw(2) << static_cast<unsigned int>(it->first.day()) << ")";
+	std::cout << std::endl;
+}
+
+void	printDate(std::chrono::year_month_day date) {
+	std::cout << static_cast<int>(date.year()) << "-" << std::setfill('0') << std::setw(2) << static_cast<unsigned int>(date.month()) << "-" << std::setfill('0') << std::setw(2) << static_cast<unsigned int>(date.day());
 }

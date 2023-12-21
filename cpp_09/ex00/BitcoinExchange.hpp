@@ -2,6 +2,7 @@
 #include <chrono>
 #include <iostream>
 
+void	printDate(std::chrono::year_month_day date);
 class BitcoinExchange
 {
 private:
@@ -14,7 +15,7 @@ private:
 	void addLinetomap(std::string line);
 	void handleLine(std::string line);
 	std::chrono::year_month_day handleDate(std::string date);
-	void	printRateCalculation(std::chrono::year_month_day date, int rate);
+	void	printRateCalculation(std::chrono::year_month_day date, int value);
 public:
 	BitcoinExchange(std::string filename);
 	~BitcoinExchange();

@@ -17,11 +17,25 @@ int	main(int ac, char **av) {
 		try {
 			p.addNumber(std::stoi(input));
 		} catch (std::exception &e) {
-			std::cout << "Error: " << e.what() << std::endl;
+			std::cout << "Error: " << "Containing invalid integer" << std::endl;
 			return 1;
 		}
 	}
-	// p.sortList();
+	if (p.checkDuplicates()) {
+		std::cout << "Error: " << "No duplicates allowed" << std::endl;
+		return 1;
+	}
+	std::cout << "Unsorted: ";
+	p.printSequencePart();
+	std::cout << std::endl;
+	p.sortList();
 	p.sortVector();
+	std::cout << "Sorted:   ";
+	p.printSequencePart();
+	std::cout << std::endl;
+	p.printTimes();
+	std::cout << std::endl;
+	p.checkIfSorted();
+	std::cout << std::endl;
 	return 0;
 }

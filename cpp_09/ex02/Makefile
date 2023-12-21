@@ -1,9 +1,10 @@
 SRCS =	PmergeMe.cpp \
 		PmergeMeV.cpp \
+		PmergeMeL.cpp \
 		main.cpp
 
 CPP = c++
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 COMPILE = $(CPP) $(CFLAGS)
 RM = rm -f
